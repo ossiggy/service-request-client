@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux';
 import { Container } from 'reactstrap';
-import { Tickets } from '../Tickets';
+import { Tickets, AddTicketCard } from '../Tickets';
 import { selectServiceRequests } from '../../app';
+
+import './Display.css';
 
 export const Display = () => {
   const tickets = useSelector(selectServiceRequests);
-  let display = <div>Loading...</div>;
-  if (tickets?.length) {
-    console.log('display tickets', tickets);
-    display = <Tickets tickets={tickets} />;
-  }
-  return <Container id="display-container">{display}</Container>;
+
+  return (
+    <Container id="display-container">
+      <Tickets tickets={tickets} />
+    </Container>
+  );
 };

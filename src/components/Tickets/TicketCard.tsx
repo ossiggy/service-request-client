@@ -1,17 +1,13 @@
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button, Row, Col } from 'reactstrap';
 import { ServiceRequestType } from '../../app/types';
 
-interface TicketTileProps {
+interface TicketCardProps {
   ticket: ServiceRequestType;
 }
 
-export const TicketTile = ({ ticket }: TicketTileProps) => {
+export const TicketCard = ({ ticket }: TicketCardProps) => {
   return (
-    <Card
-      style={{
-        width: '18rem'
-      }}
-    >
+    <Card className="ticket-card">
       <CardBody>
         <CardTitle tag="h5">{ticket.id}</CardTitle>
         <CardSubtitle className="mb-2 text-muted" tag="h6">

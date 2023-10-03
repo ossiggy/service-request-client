@@ -1,0 +1,12 @@
+.ticket-card {
+  width: 100%;
+  height: 100% !important;
+}
+
+.ticket-card-container {
+  margin-top: 5px !important;
+}
+
+#tickets-container {
+  justify-content: center;
+}
