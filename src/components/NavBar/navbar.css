@@ -1,0 +1,5 @@
+#navbar {
+  padding: 10px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(248, 248, 250, 1) 0%, rgba(0, 127, 255, 0.9822303921568627) 100%);
+}
