@@ -11,7 +11,6 @@ export interface AddressType {
 
 export interface ContactType {
   email: string;
-  address?: AddressType;
   phoneNumber?: string;
 }
 
@@ -21,11 +20,13 @@ export interface CustomerNameType {
 }
 
 export interface ServiceRequestType {
-  id: string;
+  id?: string;
   customerName: CustomerNameType;
   contactInfo: ContactType;
+  address: AddressType;
   requestedService: string;
   status: string;
+  error?: any;
 }
 
 export type RootState = ReturnType<typeof store.getState>;

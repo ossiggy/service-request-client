@@ -8,5 +8,6 @@
 }
 
 #tickets-container {
-  justify-content: center;
+  justify-content: start;
+  padding: 10px;
 }

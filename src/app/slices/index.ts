@@ -1,31 +1,41 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { getAllTickets, postTicket } from '../../helpers';
 import type { ServiceRequestType } from '../types';
 
 interface ServiceRequests {
-  tickets: ServiceRequestType[] | [];
+  tickets: ServiceRequestType[];
 }
 
 const initialState: ServiceRequests = {
   tickets: []
 };
 
+export const fetchTickets = createAsyncThunk('tickets/fetchTickets', async () => {
+  console.log('fetching tickets');
+  const response: ServiceRequestType[] = await getAllTickets();
+  console.log(response);
+  return response;
+});
+
+export const createTicket = createAsyncThunk('tickets/createTicket', async (ticket: ServiceRequestType) => {
+  console.log('creating ticket');
+  const response: ServiceRequestType = await postTicket(ticket);
+  console.log(response);
+  return response;
+});
+
 export const serviceRequestSlice = createSlice({
   name: 'serviceRequests',
   initialState,
-  reducers: {
-    add: (state, action: PayloadAction<ServiceRequestType>) => {
-      state.tickets = [...state.tickets, action.payload];
-    },
-    update: (state, action: PayloadAction<ServiceRequestType[]>) => {
+  reducers: {},
+  extraReducers(builder) {
+    builder.addCase(createTicket.fulfilled, (state, action: PayloadAction<ServiceRequestType>) => {
+      if (!action.payload.error) state.tickets.push(action.payload);
+    });
+    builder.addCase(fetchTickets.fulfilled, (state, action: PayloadAction<ServiceRequestType[]>) => {
       state.tickets = action.payload;
-    },
-    reset: state => {
-      state.tickets = [];
-    }
+    });
   }
 });
 
-export const {
-  reducer: serviceRequestReducer,
-  actions: { add, update, reset }
-} = serviceRequestSlice;
+export const { reducer: serviceRequestReducer } = serviceRequestSlice;
