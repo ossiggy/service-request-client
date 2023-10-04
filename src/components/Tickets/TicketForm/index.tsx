@@ -2,18 +2,17 @@ import { useState } from 'react';
 import { Form, Button, Container } from 'reactstrap';
 import { InputGroups } from './InputGroups';
 import { formFields } from './formFields';
-import type { ChangeHandlerType, SubmitHandlerType, ClickHandlerType } from '../../types';
+import type { ChangeHandlerType, SubmitHandlerType } from '../../types';
 import type { ServiceRequestType } from '../../../app/types';
 
 import './TicketForm.css';
 
 interface TicketFormProps {
   handleSubmit: SubmitHandlerType;
-  handleCloseModal: ClickHandlerType;
   ticket?: ServiceRequestType;
 }
 
-export const TicketForm = ({ handleSubmit, handleCloseModal, ticket }: TicketFormProps) => {
+export const TicketForm = ({ handleSubmit, ticket }: TicketFormProps) => {
   const [fields, setFields] = useState<Record<string, any>>({
     status: 'Requested'
   });

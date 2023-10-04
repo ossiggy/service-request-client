@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Container } from 'reactstrap';
 import { useAppDispatch } from '../../hooks';
 import { NavBar } from '../NavBar';
-import { Tickets } from '../Tickets';
-import { TicketModal } from '../Tickets/TicketModal';
+import { Tickets, TicketModal } from '../Tickets';
 import { createTicket } from '../../app';
 import type { ServiceRequestType } from '../../app/types';
 import type { ClickHandlerType, SubmitHandlerType } from '../types';
@@ -24,18 +23,17 @@ export const Display = () => {
     setIsOpen(true);
   };
 
-  const handleCloseModal: ClickHandlerType = e => {
+  const handleCloseModal: ClickHandlerType = () => {
     setIsOpen(false);
   };
 
   const handleSubmit: SubmitHandlerType = async (e, data) => {
     e.preventDefault();
     try {
-      console.log('SUBMIT DATA', data);
       await dispatch(createTicket(data));
       setIsOpen(false);
     } catch (err) {
-      console.error('failed to createTicket');
+      console.error('failed to createTicket', err);
     }
   };
 

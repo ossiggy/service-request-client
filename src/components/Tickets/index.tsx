@@ -16,14 +16,14 @@ interface TicketsProps {
 export const Tickets = ({ handleUpdateModal, handleNewContent, newContent }: TicketsProps) => {
   const dispatch = useAppDispatch();
   const tickets = useAppSelector(selectServiceRequests);
-
+  
   useEffect(() => {
     if (newContent) {
       dispatch(fetchTickets());
     }
     handleNewContent();
   }, [dispatch, newContent]);
-
+  
   let display;
   if (tickets?.length) {
     display = tickets.map(ticket => {
@@ -34,10 +34,12 @@ export const Tickets = ({ handleUpdateModal, handleNewContent, newContent }: Tic
       );
     });
   }
-
+  
   return (
     <Row id="tickets-container" xs="1" sm="2" md="4">
       {display}
     </Row>
   );
 };
+
+export { TicketModal } from './TicketModal';

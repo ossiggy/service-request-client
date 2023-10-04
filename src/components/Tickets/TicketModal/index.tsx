@@ -3,8 +3,6 @@ import { TicketForm } from '../TicketForm';
 import type { ClickHandlerType, SubmitHandlerType } from '../../types';
 import { ServiceRequestType } from '../../../app/types';
 
-import './TicketModal.css';
-
 interface TicketModalProps {
   isOpen: boolean;
   ticket: ServiceRequestType | null;
@@ -23,11 +21,11 @@ export const TicketModal = ({ isOpen, ticket, handleSubmit, handleCloseModal }: 
 
   return (
     <Modal isOpen={isOpen}>
-      <ModalHeader id="modal-header" close={closeBtn}>
+      <ModalHeader close={closeBtn}>
         {headerText}
       </ModalHeader>
       <ModalBody>
-        <TicketForm handleSubmit={handleSubmit} handleCloseModal={handleCloseModal} />
+        <TicketForm handleSubmit={handleSubmit} />
       </ModalBody>
     </Modal>
   );
