@@ -5,7 +5,7 @@ import { formFields } from './formFields';
 import type { ChangeHandlerType, SubmitHandlerType } from '../../types';
 import type { ServiceRequestType } from '../../../app/types';
 
-import './TicketForm.css';
+import './TicketForm.scss';
 
 interface TicketFormProps {
   handleSubmit: SubmitHandlerType;
@@ -56,3 +56,5 @@ export const TicketForm = ({ handleSubmit, ticket }: TicketFormProps) => {
     </Form>
   );
 };
+
+export { InputGroups };

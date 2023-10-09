@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import { useAppDispatch } from '../../hooks';
 import { NavBar } from '../NavBar';
+import { SideNav } from '../SideNav';
 import { Tickets, TicketModal } from '../Tickets';
 import { createTicket } from '../../app';
 import type { ServiceRequestType } from '../../app/types';
 import type { ClickHandlerType, SubmitHandlerType } from '../types';
 
-import './Display.css';
+import './Display.scss';
 
 export const Display = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +46,10 @@ export const Display = () => {
     <Container id="display-container">
       <NavBar handleUpdateModal={handleUpdateModal} />
       <TicketModal isOpen={isOpen} ticket={modalDetails} handleSubmit={handleSubmit} handleCloseModal={handleCloseModal} />
-      <Tickets handleUpdateModal={handleUpdateModal} handleNewContent={handleNewContent} newContent={newContent} />
+      <SideNav />
+      <Container id="main-display" xs="3">
+        <Tickets handleUpdateModal={handleUpdateModal} handleNewContent={handleNewContent} newContent={newContent} />
+      </Container>
     </Container>
   );
 };

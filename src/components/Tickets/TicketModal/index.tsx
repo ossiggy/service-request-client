@@ -21,9 +21,7 @@ export const TicketModal = ({ isOpen, ticket, handleSubmit, handleCloseModal }: 
 
   return (
     <Modal isOpen={isOpen}>
-      <ModalHeader close={closeBtn}>
-        {headerText}
-      </ModalHeader>
+      <ModalHeader close={closeBtn}>{headerText}</ModalHeader>
       <ModalBody>
         <TicketForm handleSubmit={handleSubmit} />
       </ModalBody>
